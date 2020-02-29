@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap CDN file -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <!-- Theme main CSS file -->
+    <link rel="stylesheet" href="style.css">
+    <title>Develop an simple bank website</title>       
+</head>
+<body>
+    <div id="login-area">
+        <h1 class="text-center">Welcome to Demo Bank</h1>
+        <div class="submit-area" id="submit-area">
+            <input type="text" name="" class="form-control" id="" placeholder="Enter your username">
+            <br>
+            <input type="password" name="" class="form-control" id="" placeholder="Enter your password">
+            <br>
+            <button id="login" class="btn btn-success">Login</button>
+        </div>
+    </div>
+    <div id="transaction-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="deposit">
+                        <h5>Deposit</h5>
+                        <h2>$ <span id="currentDeposit">00</span></h2>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="withdraw">
+                        <h5>Withdraw</h5>
+                        <h2>$ 00</h2>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="balance">
+                        <h5>Balance</h5>
+                        <h2>$ 1200</h2>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mt-3">
+                <div class="col-md-6">
+                    <div class="submit-area">
+                        <h5>Deposit</h5>
+                        <input id="depositAmount" type="text" class="form-control" placeholder="$ amount you want to deposit">
+                        <br>
+                        <button id="addDeposit" class="btn btn-success">Depopsit</button>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="submit-area">
+                        <h5>Withdraw</h5>
+                        <input type="text" class="form-control" placeholder="$ amount you want to withdraw">
+                        <br>
+                        <button id="addWithdraw" class="btn btn-success">Withdraw</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        // login button event 
+        const login =  document.getElementById("login");
+        login.addEventListener("click", function(){
+            const loginArea = document.getElementById("login-area");
+            loginArea.style.display = "none";
+            const transArea = document.getElementById("transaction-area");
+            transArea.style.display = "block";
+        })
+        // deposit button event 
+        const depo = document.getElementById("addDeposit");
+        depo.addEventListener("click", function(){
+            const depositAmount = document.getElementById("depositAmount").value;
+            const depositNumber = parseFloat(depositAmount);
+
+            const currentDeposit = document.getElementById("currentDeposit").innerText;
+            const currentDepositNum = parseFloat(currentDeposit);
+            const totalDeposit = depositNumber + currentDepositNum;
+            
+            document.getElementById("currentDeposit").innerText = totalDeposit;
+            document.getElementById("depositAmount").value = "";
+
+        })
+    </script>
+
+
+
+
+
+    <!-- JS CDN file -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+</body>
+</html>
